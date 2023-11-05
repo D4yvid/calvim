@@ -1,5 +1,5 @@
 local setup = function ()
-	require("catppuccin").setup({
+	require("catppuccin").setup {
 		flavour = "macchiato",
 		term_colors = true,
 		integrations = {
@@ -13,7 +13,7 @@ local setup = function ()
 				indentscope_color = "",
 			},
 		},
-	})
+	}
 
 	vim.cmd.colorscheme "catppuccin"
 end

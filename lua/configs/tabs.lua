@@ -4,7 +4,7 @@ local setup = function ()
 	barbar.setup {
 		animations = true,
 
-		auto_hide = true,
+		auto_hide = false,
 		clickable = true,
 
 		icons = {

@@ -1,4 +1,4 @@
-vim.opt.guifont = 'FiraMono Nerd Font:h12'
+vim.opt.guifont = 'Source Code Pro:h11'
 
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0

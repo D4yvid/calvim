@@ -10,4 +10,3 @@ nmap('<leader>w', '<cmd>w<CR>')
 local lsp = require 'configs.lsp'
 
 lsp.add_server 'clangd'
-

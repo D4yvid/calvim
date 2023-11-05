@@ -47,7 +47,7 @@ local setup = function ()
 	whichkey.register({
 		l = {
 			name = ' LSP (Language Server Protocol)',
-			
+
 			f = { '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', '󰦨 Format' },
 			h = { '<cmd>lua vim.lsp.buf.hover()<CR>', '󱁯 Hover' },
 			r = { '<cmd>lua vim.lsp.buf.rename()<CR>', '󰏫 Rename' },
@@ -70,7 +70,7 @@ local setup = function ()
 			}
 		},
 
-		e = { '<cmd>Neotree toggle<CR>', '󰙅 Toggle file tree' },
+		e = { '<cmd>NvimTreeToggle<CR>', '󰙅 Toggle file tree' },
 		f = { '<cmd>Telescope find_files<CR>', '󰱼 Find file' },
 		b = { '<cmd>Telescope buffers<CR>', '󱎸 Find buffer' },
 

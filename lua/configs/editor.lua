@@ -1,6 +1,9 @@
 -- Enable line wrapping
 vim.opt.wrap = true
 
+-- Use system clipbard
+vim.opt.clipboard = 'unnamedplus'
+
 -- Enable line number & show sign column
 vim.opt.number = true
 vim.opt.signcolumn = 'yes'

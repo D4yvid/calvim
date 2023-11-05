@@ -71,7 +71,8 @@ local plugins = {
 		'nvim-telescope/telescope.nvim',
 
 		dependencies = {
-			'nvim-telescope/telescope-ui-select.nvim'
+			'nvim-telescope/telescope-ui-select.nvim',
+			'nvim-lua/plenary.nvim'
 		},
 
 		main = 'configs.telescope'
@@ -80,10 +81,10 @@ local plugins = {
 	{
 		'nvim-lualine/lualine.nvim',
 
-		main = 'configs.statusline'
+		main = 'configs.statusline',
 	},
 
-	{ 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter' },
+	{ 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter', event = 'BufReadPre' },
 
 	{
 		'folke/noice.nvim',
@@ -94,6 +95,7 @@ local plugins = {
 		},
 
 		main = 'configs.noice',
+		event = 'VimEnter'
 	},
 
 	{ 'lukas-reineke/indent-blankline.nvim', main = 'configs.indentline' },
@@ -101,15 +103,9 @@ local plugins = {
 	{ 'windwp/nvim-autopairs', main = 'configs.autopairs' },
 
 	{
-		'nvim-neo-tree/neo-tree.nvim',
+		'nvim-tree/nvim-tree.lua',
 
-		dependencies = {
-			'MunifTanjim/nui.nvim',
-			'nvim-lua/plenary.nvim'
-		},
-
-		cmd = 'Neotree',
-		main = 'configs.neotree'
+		main = 'configs.nvimtree'
 	},
 
 	{
