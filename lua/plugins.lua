@@ -98,8 +98,6 @@ local plugins = {
 		event = 'VimEnter'
 	},
 
-	{ 'lukas-reineke/indent-blankline.nvim', main = 'configs.indentline' },
-
 	{ 'windwp/nvim-autopairs', main = 'configs.autopairs' },
 
 	{
