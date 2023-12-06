@@ -8,6 +8,8 @@ end
 
 function setup_server(server)
 	local lspconfig = require 'lspconfig'
+	local cmplsp = require 'cmp_nvim_lsp'
+	local capabilities = cmplsp.default_capabilities()
 
 	lspconfig[server].setup {
 		capabilities = capabilities,
@@ -40,10 +42,7 @@ local function get_servers()
 end
 
 local setup = function ()
-	local cmplsp = require 'cmp_nvim_lsp'
 	local mason_lsp = require 'mason-lspconfig'
-
-	local capabilities = cmplsp.default_capabilities()
 	local lspconfig = require 'lspconfig'
 
 	require 'mason'.setup {}

@@ -17,7 +17,7 @@ local setup = function ()
 		},
 
 		sidebar_filetypes = {
-			['neo-tree'] = {event = 'BufWipeout'},
+			NvimTree = true
 		}
 	}
 end

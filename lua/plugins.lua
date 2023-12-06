@@ -24,8 +24,8 @@ local plugins = {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-cmdline',
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
+			'dcampos/nvim-snippy',
+			'dcampos/cmp-snippy',
 		},
 
 		main = 'configs.completion'
@@ -107,8 +107,7 @@ local plugins = {
 	},
 
 	{
-		"catppuccin/nvim",
-		name = 'catppuccin',
+		"navarasu/onedark.nvim",
 
 		event = 'VimEnter',
 		main = 'configs.colorscheme'
@@ -118,6 +117,19 @@ local plugins = {
 		'romgrk/barbar.nvim',
 
 		main = 'configs.tabs'
+	},
+
+	{
+		'ray-x/lsp_signature.nvim',
+
+		opts = {
+			bind = true,
+			floating_window = false,
+			hint_prefix = ' ',
+			always_trigger = false
+		},
+		event = 'VeryLazy',
+		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	}
 }
 
@@ -133,7 +145,7 @@ end
 
 local opts = {
 	defaults = {
-		lazy = true
+    lazy = true,
 	},
 
 	concurrency = vim.loop.available_parallelism()

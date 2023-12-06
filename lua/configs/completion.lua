@@ -1,5 +1,5 @@
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local snippy = require 'snippy'
 
 local cmp_kinds = {
 	Text = '  ',
@@ -31,15 +31,19 @@ local cmp_kinds = {
 
 local setup = function ()
 	cmp.setup {
+		performance = {
+			max_view_entries = 60
+		},
+
 		snippet = {
 			expand = function (args)
-				luasnip.lsp_expand(args.body)
+				snippy.expand_snippet(args.body)
 			end
 		},
 
 		sources = cmp.config.sources {
 			{ name = 'buffer'   },
-			{ name = 'luasnip'  },
+			{ name = 'snippy'   },
 			{ name = 'nvim_lsp' }
 		},
 
@@ -68,8 +72,8 @@ local setup = function ()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
+				elseif snippy.can_expand_or_advance() then
+					snippy.expand_or_advance()
 				else
 					fallback()
 				end
@@ -78,8 +82,8 @@ local setup = function ()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
+				elseif snippy.can_jump(-1) then
+					snippy.previous()
 				else
 					fallback()
 				end
