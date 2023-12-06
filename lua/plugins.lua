@@ -1,154 +1,154 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-	vim.notify 'Installing lazy.nvim...'
+  vim.notify 'Installing lazy.nvim...'
 
-	vim.fn.system {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath
-	}
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	{
-		'hrsh7th/nvim-cmp',
+  {
+    'hrsh7th/nvim-cmp',
 
-		dependencies = {
-			'nvim-tree/nvim-web-devicons',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'dcampos/nvim-snippy',
-			'dcampos/cmp-snippy',
-		},
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'dcampos/nvim-snippy',
+      'dcampos/cmp-snippy',
+    },
 
-		main = 'configs.completion'
-	},
+    main = 'configs.completion'
+  },
 
-	{
-		'neovim/nvim-lspconfig',
+  {
+    'neovim/nvim-lspconfig',
 
-		dependencies = {
-			'williamboman/mason.nvim',
-			'williamboman/mason-lspconfig.nvim',
-		},
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
 
-		main = 'configs.lsp'
-	},
+    main = 'configs.lsp'
+  },
 
-	{
-		'akinsho/toggleterm.nvim',
+  {
+    'akinsho/toggleterm.nvim',
 
-		main = 'configs.term'
-	},
+    main = 'configs.term'
+  },
 
-	{
-		'elkowar/yuck.vim',
+  {
+    'elkowar/yuck.vim',
 
-		event = 'VeryLazy'
-	},
+    event = 'VeryLazy'
+  },
 
-	{
-		'lewis6991/gitsigns.nvim',
+  {
+    'lewis6991/gitsigns.nvim',
 
-		main = 'configs.git'
-	},
+    main = 'configs.git'
+  },
 
-	{
-		'folke/which-key.nvim',
+  {
+    'folke/which-key.nvim',
 
-		main = 'configs.mappings',
-		priority = 200
-	},
+    main = 'configs.mappings',
+    priority = 200
+  },
 
-	{
-		'nvim-telescope/telescope.nvim',
+  {
+    'nvim-telescope/telescope.nvim',
 
-		dependencies = {
-			'nvim-telescope/telescope-ui-select.nvim',
-			'nvim-lua/plenary.nvim'
-		},
+    dependencies = {
+      'nvim-telescope/telescope-ui-select.nvim',
+      'nvim-lua/plenary.nvim'
+    },
 
-		main = 'configs.telescope'
-	},
+    main = 'configs.telescope'
+  },
 
-	{
-		'nvim-lualine/lualine.nvim',
+  {
+    'nvim-lualine/lualine.nvim',
 
-		main = 'configs.statusline',
-	},
+    main = 'configs.statusline',
+  },
 
-	{ 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter', event = 'BufReadPre' },
+  { 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter', event = 'BufReadPre' },
 
-	{
-		'folke/noice.nvim',
+  {
+    'folke/noice.nvim',
 
-		dependencies = {
-			'MunifTanjim/nui.nvim',
-			'rcarriga/nvim-notify'
-		},
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify'
+    },
 
-		main = 'configs.noice',
-		event = 'VimEnter'
-	},
+    main = 'configs.noice',
+    event = 'VimEnter'
+  },
 
-	{ 'windwp/nvim-autopairs', main = 'configs.autopairs' },
+  { 'windwp/nvim-autopairs', main = 'configs.autopairs' },
 
-	{
-		'nvim-tree/nvim-tree.lua',
+  {
+    'nvim-tree/nvim-tree.lua',
 
-		main = 'configs.nvimtree'
-	},
+    main = 'configs.nvimtree'
+  },
 
-	{
-		"navarasu/onedark.nvim",
+  {
+    "navarasu/onedark.nvim",
 
-		event = 'VimEnter',
-		main = 'configs.colorscheme'
-	},
+    event = 'VimEnter',
+    main = 'configs.colorscheme'
+  },
 
-	{
-		'romgrk/barbar.nvim',
+  {
+    'romgrk/barbar.nvim',
 
-		main = 'configs.tabs'
-	},
+    main = 'configs.tabs'
+  },
 
-	{
-		'ray-x/lsp_signature.nvim',
+  {
+    'ray-x/lsp_signature.nvim',
 
-		opts = {
-			bind = true,
-			floating_window = false,
-			hint_prefix = ' ',
-			always_trigger = false
-		},
-		event = 'VeryLazy',
-		config = function(_, opts) require 'lsp_signature'.setup(opts) end
-	}
+    opts = {
+      bind = true,
+      floating_window = false,
+      hint_prefix = ' ',
+      always_trigger = false
+    },
+    event = 'VeryLazy',
+    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+  }
 }
 
 for _, plugin in ipairs(plugins) do
-	if plugin.main ~= nil then
-		plugin.config = true
-		
-		if (plugin.event or plugin.cmd or plugin.ft) == nil then
-			plugin.event = 'VeryLazy'
-		end
-	end
+  if plugin.main ~= nil then
+    plugin.config = true
+    
+    if (plugin.event or plugin.cmd or plugin.ft) == nil then
+      plugin.event = 'VeryLazy'
+    end
+  end
 end
 
 local opts = {
-	defaults = {
+  defaults = {
     lazy = true,
-	},
+  },
 
-	concurrency = vim.loop.available_parallelism()
+  concurrency = vim.loop.available_parallelism()
 }
 
 local lazy = require 'lazy'

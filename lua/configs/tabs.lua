@@ -1,25 +1,25 @@
 local setup = function ()
-	local barbar = require 'barbar'
+  local barbar = require 'barbar'
 
-	barbar.setup {
-		animations = true,
+  barbar.setup {
+    animations = true,
 
-		auto_hide = false,
-		clickable = true,
+    auto_hide = false,
+    clickable = true,
 
-		icons = {
-			button = '',
-			separator = { left = '▎', right = ' ' },
+    icons = {
+      button = '',
+      separator = { left = '▎', right = ' ' },
 
-			maximum_length = 22,
+      maximum_length = 22,
 
-			separator_at_end = true
-		},
+      separator_at_end = true
+    },
 
-		sidebar_filetypes = {
-			NvimTree = true
-		}
-	}
+    sidebar_filetypes = {
+      NvimTree = true
+    }
+  }
 end
 
 return { setup = setup }

@@ -16,7 +16,7 @@ vim.opt.ruler = false
 
 -- Remove the "~" at the end of a buffer
 vim.opt.fillchars = {
-	eob = ' '
+  eob = ' '
 }
 
 -- Set tab size to 2
@@ -31,7 +31,7 @@ vim.opt.cmdheight = 0
 -- {|
 --  to
 -- {
--- 	|
+--   |
 vim.opt.smarttab    = true
 vim.opt.smartindent = true
 

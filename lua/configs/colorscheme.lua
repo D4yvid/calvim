@@ -1,11 +1,11 @@
 local setup = function ()
-	local onedark = require 'onedark'
+  local onedark = require 'onedark'
 
-	onedark.setup {
-		style = 'darker'
-	}
+  onedark.setup {
+    style = 'darker'
+  }
 
-	onedark.load()
+  onedark.load()
 end
 
 return { setup = setup }
