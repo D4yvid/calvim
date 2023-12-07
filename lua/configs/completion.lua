@@ -65,10 +65,11 @@ local setup = function ()
     },
 
     formatting = {
-      fields = { 'abbr', 'kind' },
+      fields = { 'kind', 'abbr', 'menu' },
 
       format = function (entry, vim_item)
-        vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+				vim_item.menu = ' (' .. vim_item.kind .. ')'
+        vim_item.kind = (cmp_kinds[vim_item.kind] or '')
 
         return vim_item
       end
