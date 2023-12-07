@@ -28,7 +28,8 @@ local plugins = {
       'dcampos/cmp-snippy',
     },
 
-    main = 'configs.completion'
+    main = 'configs.completion',
+    event = { 'InsertEnter', 'CmdlineEnter' }
   },
 
   {
@@ -51,13 +52,14 @@ local plugins = {
   {
     'elkowar/yuck.vim',
 
-    event = 'VeryLazy'
+    event = 'BufNew'
   },
 
   {
     'lewis6991/gitsigns.nvim',
 
-    main = 'configs.git'
+    main = 'configs.git',
+    event = 'VimEnter'
   },
 
   {
@@ -84,7 +86,7 @@ local plugins = {
     main = 'configs.statusline',
   },
 
-  { 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter', event = 'BufReadPre' },
+  { 'nvim-treesitter/nvim-treesitter', main = 'configs.treesitter', event = 'VimEnter' },
 
   {
     'folke/noice.nvim',
@@ -122,14 +124,8 @@ local plugins = {
   {
     'ray-x/lsp_signature.nvim',
 
-    opts = {
-      bind = true,
-      floating_window = false,
-      hint_prefix = ' ',
-      always_trigger = false
-    },
     event = 'VeryLazy',
-    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    main = 'configs.signature_help'
   }
 }
 

@@ -42,23 +42,33 @@ local setup = function ()
     },
 
     sources = cmp.config.sources {
-      { name = 'buffer'   },
-      { name = 'snippy'   },
-      { name = 'nvim_lsp' }
+      { name = 'buffer',   keyword_length = 3 },
+      { name = 'snippy',   priority = 11 },
+      { name = 'nvim_lsp', priority = 10 }
     },
 
     window = {
       completion = vim.tbl_deep_extend("force", cmp.config.window.bordered(), {
-        col_offset = -3,
-        side_padding = 0
+        col_offset = -1,
+        side_padding = 1
       })
     },
 
+    view = {
+      docs = {
+        auto_open = false
+      }
+    },
+
+    completion = {
+      completeopt = 'noinsert,noselect,menuone'
+    },
+
     formatting = {
-      fields = { 'kind', 'abbr' },
+      fields = { 'abbr', 'kind' },
 
       format = function (entry, vim_item)
-        vim_item.kind = ' ' .. (cmp_kinds[vim_item.kind] or '')
+        vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
 
         return vim_item
       end

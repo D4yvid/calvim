@@ -1,6 +1,3 @@
--- Enable line wrapping
-vim.opt.wrap = true
-
 -- Use system clipbard
 vim.opt.clipboard = 'unnamedplus'
 

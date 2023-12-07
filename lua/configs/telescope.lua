@@ -10,6 +10,7 @@ local setup = function ()
   }
 
   telescope.load_extension 'ui-select'
+  telescope.load_extension 'noice'
 end
 
 return { setup = setup }
