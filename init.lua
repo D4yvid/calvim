@@ -1,11 +1,7 @@
-local utils = require 'utils'
+_G.IS_WINDOWS = vim.fn.has('win32')
+_G.DIR_SEP = IS_WINDOWS and "\\" or "/"
+_G.ENV_SEP = IS_WINDOWS and ";" or ":"
+_G.VERSION = "0.1.0-1-devel"
 
-_G.DIR_SEP = utils.is_windows() and "\\" or "/"
 
-if vim.g.neovide then
-  require 'configs.neovide'
-end
 
-require 'configs.editor'
-require 'user'
-require 'plugins'
