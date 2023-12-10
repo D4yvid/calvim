@@ -9,7 +9,13 @@ function M:load()
 	vim.opt.runtimepath:append(user_rtp)
 
 	-- Load user options
-	self.settings = require 'user'
+	local success, settings = pcall(require, 'user')
+
+	if not success then
+		return
+	end
+
+	self.settings = settings
 
 	if type(self.settings) == 'table' then
 		-- The user returned options in the script,

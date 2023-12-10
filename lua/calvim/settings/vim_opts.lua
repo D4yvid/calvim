@@ -38,6 +38,13 @@ function M:create_profile(name, defaults)
 	self.profiles[name] = defaults
 end
 
+function M:append_profile(profile, overwrite)
+	local opts = self.opts
+	local profile_opts = self.profiles[profile] or {}
+
+	self.opts = vim.tbl_deep_extend(overwrite and 'force' or 'keep', opts, profile_opts)
+end
+
 setmetatable(M, {
 	__newindex = function (tbl, key, value)
 		tbl:set(key, value)

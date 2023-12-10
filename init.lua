@@ -7,4 +7,8 @@ _G.USER_DIR = CONFIG_DIR .. '/user'
 
 _G.calvim = require 'calvim'
 
+calvim:init()
+
 calvim.user:load()
+
+calvim:start()
