@@ -6,6 +6,8 @@ function M:init()
 	self.vim = require 'calvim.settings.vim_opts'
 	self.plugins = require 'calvim.settings.plugins'
 	self.lazy = require 'calvim.settings.lazy'
+	self.lsp = {}
+	self.globals = {}
 end
 
 function M:load()

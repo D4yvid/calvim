@@ -4,7 +4,33 @@ local M = {
 		default = {
 			tabstop = 2,
 			softtabstop = 2,
-			shiftwidth = 2
+			shiftwidth = 2,
+
+			number = true,
+			signcolumn = 'yes',
+
+			relativenumber = true,
+
+			clipboard = 'unnamedplus',
+			cursorline = true,
+			ruler = false,
+
+			fillchars = {
+			  eob = ' '
+			},
+
+			cmdheight = 0,
+			smarttab = true,
+			smartindent = true,
+			autoindent = true,
+			timeout = true,
+			timeoutlen = 500,
+			showmode = false,
+			scrolloff = 8,
+			sidescrolloff = 16,
+			wrap = false,
+
+			termguicolors = true
 		}
 	}
 }

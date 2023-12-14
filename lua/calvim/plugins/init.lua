@@ -22,9 +22,9 @@ function M:append_profile(profile, overwrite)
 end
 
 function M:create_profile(name, defaults)
-        defaults = defaults or {}
- 
-        self.profiles[name] = defaults
+  defaults = defaults or {}
+
+	self.profiles[name] = defaults
 end
 
 return M
