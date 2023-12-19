@@ -18,7 +18,7 @@ function M:init()
 			group = "+",
 		},
 
-		show_help = false,
+		show_help = true,
 
 		window = {
 			position = 'top',

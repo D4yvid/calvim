@@ -24,4 +24,11 @@
 -- overwrite: set to true if you want to overwrite already added plugins
 -- calvim.plugins:append_profile('test-profile', --[[overwrite: ]] true)
 
+-- Disable all icons
 -- calvim.settings.plugins.enable_icons = false
+
+-- Include presets (see lua/presets/README.md for more info)
+local java_preset = require 'presets.java-dev'
+
+java_preset:init()
+java_preset:activate()
