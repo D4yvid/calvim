@@ -11,7 +11,7 @@ function M:init()
 end
 
 function M:load()
-	vim.cmd.colorscheme(self.colorscheme)
+	pcall(vim.cmd.colorscheme, self.colorscheme)
 
 	self.vim:load_current()
 end

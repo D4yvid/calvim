@@ -8,22 +8,20 @@ return {
 				r = { '<cmd>lua vim.lsp.buf.rename()<CR>', '󰏫 Rename' },
 				s = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', '󰋽 Signature help' },
 				a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', ' Code action' },
-
-				d = {
-					name = ' Diagnostics',
-
-					h = { '<cmd>lua vim.diagnostic.goto_next()<CR>', ' Next' },
-					l = { '<cmd>lua vim.diagnostic.goto_prev()<CR>', ' Previous' },
-					c = { '<cmd>lua vim.diagnostic.open_float()<CR>', ' Current' }
-				},
 			},
+		},
+
+		['<leader>'] = {
+			['.'] = { '<cmd>lua vim.diagnostic.open_float()<CR>', ' Current Diagnostic' }
 		},
 
 		K = { '<cmd>lua vim.lsp.buf.hover()<CR>', '󱁯 Hover' },
 
 		g = {
-			name = ' Goto location',
+			name = ' Goto location &  Diagnostics',
 
+			j = { '<cmd>lua vim.diagnostic.goto_next()<CR>', ' Next Diagnostic' },
+			k = { '<cmd>lua vim.diagnostic.goto_prev()<CR>', ' Previous Diagnostic' },
 			i = { '<cmd>lua vim.lsp.buf.implementation()<CR>', '󰅩 Implementation' },
 			d = { '<cmd>lua vim.lsp.buf.definition()<CR>', ' Definition' },
 			t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', '󰆦 Type definition' },

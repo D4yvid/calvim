@@ -104,7 +104,12 @@ return {
 	which_key = {
 		'folke/which-key.nvim',
 
-		event = 'VeryLazy',
 		lazy = false
+	},
+
+	harpoon = {
+		'ThePrimeagen/harpoon',
+
+		event = 'VeryLazy',
 	}
 }

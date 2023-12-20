@@ -12,6 +12,8 @@ function M:load()
 	local success, settings = pcall(require, 'user')
 
 	if not success then
+		vim.notify('Could not load user configuration: ' .. settings, 'error')
+
 		return
 	end
 
