@@ -2,8 +2,13 @@ plugins {
 	{
 		'nvim-telescope/telescope.nvim',
 
-		dependencies = { 'nvim-lua/plenary.nvim' }
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-ui-select.nvim'
+		}
 	},
+
+	'2072/vim-syntax-for-PHP',
 
 	{
 		'neovim/nvim-lspconfig',
@@ -47,7 +52,9 @@ options {
 	shiftwidth = 2,
 	smartindent = true,
 	autoindent = true,
-	smarttab = true
+	smarttab = true,
+	scrolloff = 8,
+	sidescrolloff = 16
 }
 
 colorscheme 'moonfly'
@@ -68,11 +75,22 @@ mappings {
 	{ 'n', '<leader>f' , cmd.Telescope 'find_files' },
 	{ 'n', '<leader>o' , cmd.Telescope 'live_grep' },
 	{ 'n', '<leader>e' , vim.cmd.Ntree },
+	{ 'n', '<leader>i', vim.lsp.buf.hover },
+	{ 'n', 'gd', vim.lsp.buf.definition },
+	{ 'n', 'gr', vim.lsp.buf.references },
+	{ 'n', '<leader>lf', cmd.lua 'vim.lsp.buf.format { async = true }' }
 }
 
 treesitter {
 	highlight = { enable = true },
-	autotag = { enable = true }	
+	autotag = { enable = true },
+	indent = { enable = false }
+}
+
+telescope {
+	plugins = {
+		'ui-select'
+	}
 }
 
 completion {
@@ -141,7 +159,7 @@ completion {
 
 lsp_servers {
 	server 'clangd',
-	server 'lua_ls'
+	server 'intelephense'
 }
 
 lsp_installer {
@@ -149,3 +167,7 @@ lsp_installer {
 
 comments {
 }
+
+vim.cmd [[
+	au BufNew,BufReadPre,BufRead *.php set ai si smarttab
+]]

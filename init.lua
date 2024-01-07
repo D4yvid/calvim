@@ -93,6 +93,14 @@ function completion_mapping(opts)
 	return require 'cmp'.mapping(unpack(opts))
 end
 
+function telescope(opts)
+	require 'telescope'.setup(opts.opts or {})
+
+	for _, ext in ipairs(opts.plugins or {}) do
+		require 'telescope'.load_extension(ext)
+	end
+end
+
 local cmd = {}
 setmetatable(cmd, {
 	__index = function (_, key)
