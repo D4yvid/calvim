@@ -72,7 +72,7 @@ function options(opts)
 end
 
 function plugins(pls)
-	require 'lazy'.setup(pls)
+	require 'lazy'.setup(pls, { show_ui = false })
 end
 
 function completion(opts)
@@ -99,6 +99,10 @@ function telescope(opts)
 	for _, ext in ipairs(opts.plugins or {}) do
 		require 'telescope'.load_extension(ext)
 	end
+end
+
+function autopairs(opts)
+	require 'nvim-autopairs'.setup(opts)
 end
 
 local cmd = {}

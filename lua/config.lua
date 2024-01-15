@@ -38,6 +38,14 @@ plugins {
 	},
 
 	'bluz71/vim-moonfly-colors',
+	'windwp/nvim-autopairs',
+	'honza/vim-snippets',
+	{
+		'norcalli/nvim-colorizer.lua',
+
+		event = 'VimEnter',
+		config = function () require 'colorizer'.setup {} end
+	}
 }
 
 options {
@@ -78,6 +86,7 @@ mappings {
 	{ 'n', '<leader>i', vim.lsp.buf.hover },
 	{ 'n', 'gd', vim.lsp.buf.definition },
 	{ 'n', 'gr', vim.lsp.buf.references },
+	{ 'n', '<leader>.', vim.lsp.buf.code_action },
 	{ 'n', '<leader>lf', cmd.lua 'vim.lsp.buf.format { async = true }' }
 }
 
@@ -141,6 +150,29 @@ completion {
 			end
 		end, { 'i', 's' } },
 
+		K = function (fallback)
+			local cmp = require 'cmp'
+			local snippy = require 'snippy'
+
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end,
+
+		J = function (fallback)
+			local cmp = require 'cmp'
+			local snippy = require 'snippy'
+
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end,
+
+
 		['<C-b>']     = completion_mapping { function (_) require 'cmp'.mapping.scroll_docs(-4) end, { 'i' } },
 		['<C-f>']     = completion_mapping { function (_) require 'cmp'.mapping.scroll_docs(4) end, { 'i' } },
 		['<C-Space>'] = completion_mapping { function (_) require 'cmp'.mapping.complete() end, { 'i' } },
@@ -159,7 +191,8 @@ completion {
 
 lsp_servers {
 	server 'clangd',
-	server 'intelephense'
+	server 'intelephense',
+	server 'tsserver'
 }
 
 lsp_installer {
@@ -167,6 +200,8 @@ lsp_installer {
 
 comments {
 }
+
+autopairs {}
 
 vim.cmd [[
 	au BufNew,BufReadPre,BufRead *.php set ai si smarttab
